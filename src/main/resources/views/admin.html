@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/insertchamp}" method="POST">
+    <input type="text" name="krnm" placeholder="한글 이름">
+    <input type="text" name="ennm" placeholder="영어 이름">
+    <input type="submit" th:value="등록">
+</form>
+</body>
+</html>
