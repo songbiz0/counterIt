@@ -8,20 +8,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_stats")
 @Getter @Setter
-public class Stats {
+public class StatsEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
     @ManyToOne
     @JoinColumn(name = "std_idx")
-    private Champ stdChamp;
+    private ChampEntity stdChampEntity;
 
     @ManyToOne
     @JoinColumn(name = "vs_idx")
-    private Champ vsChamp;
+    private ChampEntity vsChampEntity;
 
     private Double delta;
     private String ver;
-    private Integer tier;
+    private String tier;
+    private String lane;
+    private int games;
 }

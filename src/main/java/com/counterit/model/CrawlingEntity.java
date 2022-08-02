@@ -6,14 +6,13 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_crawling")
 @Getter @Setter
-public class User {
+public class CrawlingEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    private String uid;
-    private String upw;
-    private String urole;
+    private String ver;
+    private String stat;
 }

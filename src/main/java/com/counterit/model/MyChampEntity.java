@@ -8,11 +8,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_mychamp")
 @Getter @Setter
-public class Crawling {
+public class MyChampEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    private String ver;
-    private String stat;
+    @ManyToOne
+    @JoinColumn(name = "user_idx")
+    private UserEntity userEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "champ_idx")
+    private ChampEntity champEntity;
+
+    private String lane;
 }

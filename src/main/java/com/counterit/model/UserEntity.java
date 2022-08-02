@@ -6,13 +6,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_champ")
+@Table(name = "tb_user")
 @Getter @Setter
-public class Champ {
+public class UserEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    private String krnm;
-    private String ennm;
+    private String uid;
+    private String upw;
+    private String urole;
 }
