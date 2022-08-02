@@ -1,4 +1,4 @@
-package com.counterit.component;
+package com.counterit.repository;
 
 import com.counterit.model.CrawlingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

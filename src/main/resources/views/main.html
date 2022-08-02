@@ -7,9 +7,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <title>Title</title>
 </head>
 <body>
-<p>Hello World 안녕하세요</p>
+    <div class="ui left aligned container">
+        <div class="frow gap5 mt20">
+            <div class="ui mini checkbox" id="silver">
+                <input type="checkbox" tabindex="0" class="hidden">
+                <label>실버</label>
+            </div>
+            <div class="ui mini checkbox" id="gold_plus">
+                <input type="checkbox" tabindex="0" class="hidden">
+                <label>골드 이상</label>
+            </div>
+        </div>
+
+        <div class="frow gap10 mt10">
+            <div class="ui mini compact selection dropdown w100">
+                <input type="hidden" name="pet">
+                <i class="dropdown icon"></i>
+                <div class="default text">라인</div>
+                <div class="scrollhint menu">
+                    <div class="item" data-value="0">탑</div>
+                    <div class="item" data-value="1">정글</div>
+                    <div class="item" data-value="2">미드</div>
+                    <div class="item" data-value="3">원딜</div>
+                    <div class="item" data-value="4">서포터</div>
+                </div>
+            </div>
+
+            <div class="ui mini search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="검색">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

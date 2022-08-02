@@ -3,6 +3,9 @@ package com.counterit.component;
 import com.counterit.model.ChampEntity;
 import com.counterit.model.CrawlingEntity;
 import com.counterit.model.StatsEntity;
+import com.counterit.repository.ChampRepository;
+import com.counterit.repository.CrawlingRepository;
+import com.counterit.repository.StatsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +21,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 @Service
 public class CrawlingService {
 
-    @Autowired ChampRepository champRepository;
-    @Autowired StatsRepository statsRepository;
-    @Autowired CrawlingRepository crawlingRepository;
+    @Autowired
+    ChampRepository champRepository;
+    @Autowired
+    StatsRepository statsRepository;
+    @Autowired
+    CrawlingRepository crawlingRepository;
 
     public static final String WEB_DRIVER_ID = "webdriver.chrome.driver"; //드라이버 ID
     public static final String WEB_DRIVER_PATH = "C:\\chromedriver.exe"; //드라이버 경로
@@ -114,12 +120,8 @@ public class CrawlingService {
         crawlingRepository.save(crawlingEntity);
 
         try {
-            //드라이버가 null이 아니라면
             if(driver != null) {
-                //드라이버 연결 종료
-                driver.close(); //드라이버 연결 해제
-
-                //프로세스 종료
+                driver.close();
                 driver.quit();
             }
         } catch (Exception e) {

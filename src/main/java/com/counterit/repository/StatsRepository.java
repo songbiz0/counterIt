@@ -1,4 +1,4 @@
-package com.counterit.component;
+package com.counterit.repository;
 
 import com.counterit.model.StatsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
