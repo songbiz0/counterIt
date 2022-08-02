@@ -16,10 +16,11 @@ public interface StatsRepository extends JpaRepository<StatsEntity, Long> {
             "FROM tb_stats s " +
             "WHERE std_idx = :#{#dto.std_idx} " +
             "AND tier IN :#{#dto.tiers} " +
-            "AND lane = 'middle' " +
+            "AND lane = :#{#dto.lane} " +
             "GROUP BY vs_idx " +
-            "ORDER BY davg) s " +
-            "INNER JOIN tb_champ c ON s.vs_idx = c.idx",
+            "HAVING gsum >= 1000) s " +
+            "INNER JOIN tb_champ c ON s.vs_idx = c.idx " +
+            "ORDER BY s.davg",
             nativeQuery = true)
     List<StatsInterface> getStats(@Param("dto")StatsDTO dto);
 }

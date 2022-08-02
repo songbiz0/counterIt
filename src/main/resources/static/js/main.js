@@ -1,3 +1,6 @@
+const tbodyElem = document.querySelector('tbody');
+const searchElem = document.querySelector('.search');
+
 var content = [];
 
 const getChampList = () => {
@@ -19,8 +22,6 @@ getChampList();
 $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox('set checked');
 
-const searchElem = document.querySelector('.search');
-
 searchElem.addEventListener('keypress', e => {
     if(e.key === 'Enter') {
         getResult();
@@ -36,10 +37,23 @@ const getResult = () => {
         tiers.push('gold_plus');
     }
 
-    fetch('/getstats?lane=' + $('.ui.dropdown').dropdown('get text')
+    fetch('/getstats?lane=' + $('.ui.dropdown').dropdown('get value')
     + '&tiers=' + tiers
     + '&champname=' + $('.ui.search').search('get value'))
         .then(res => res.json())
-        .then(data => { console.log(data); })
+        .then(data => {
+            tbodyElem.innerHTML = ``;
+
+            data.forEach(item => {
+                const trElem = document.createElement('tr');
+                const games = item.games.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                trElem.innerHTML = `
+                <td>${item.vschampname}</td>
+                <td>${games}</td>
+                <td>${item.delta}</td>
+                `
+                tbodyElem.append(trElem);
+            });
+        })
         .catch(err => { console.error(err); });
 }

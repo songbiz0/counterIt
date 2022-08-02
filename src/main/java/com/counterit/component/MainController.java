@@ -41,17 +41,12 @@ public class MainController {
         statsDTO = statsService.setStdIdx(statsDTO);
         List<StatsVO> list = new ArrayList<>();
 
-        System.out.println("statsDTO : " + statsDTO);
 
         List<StatsInterface> asdasd = statsRepository.getStats(statsDTO);
-        System.out.println("size : " + asdasd.size());
 
         for(StatsInterface item : asdasd) {
             list.add(item.getStats());
-            System.out.println(item.getStats());
         }
-
-        System.out.println("list : " + list);
 
         return list;
     }

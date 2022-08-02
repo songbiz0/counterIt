@@ -31,7 +31,7 @@ public class CrawlingService {
     public static final String WEB_DRIVER_ID = "webdriver.chrome.driver"; //드라이버 ID
     public static final String WEB_DRIVER_PATH = "C:\\chromedriver.exe"; //드라이버 경로
     public static final List<String> tiers = List.of("silver", "gold_plus");
-    public static final List<String> lanes = List.of("middle");
+    public static final List<String> lanes = List.of("top", "jungle", "middle", "bottom", "support");
 
     public void crawling(String version) {
         Optional<CrawlingEntity> checkCrawling = crawlingRepository.findByVer(version);

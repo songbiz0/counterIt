@@ -15,8 +15,23 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="ui left aligned container">
-        <div class="frow gap5 mt20">
+    <div class="ui left aligned container mb20">
+        <div class="ui mini menu mt20">
+            <div class="header item">
+                CounterIt
+            </div>
+            <a class="item active">
+                메인
+            </a>
+            <a class="item">
+                로그인
+            </a>
+            <a class="item">
+                회원가입
+            </a>
+        </div>
+
+        <div class="frow gap5 mt30">
             <div class="ui mini checkbox" id="silver">
                 <input type="checkbox" tabindex="0" class="hidden">
                 <label>실버</label>
@@ -33,11 +48,11 @@
                 <i class="dropdown icon"></i>
                 <div class="default text">라인</div>
                 <div class="scrollhint menu">
-                    <div class="item" data-value="0">탑</div>
-                    <div class="item" data-value="1">정글</div>
-                    <div class="item" data-value="2">미드</div>
-                    <div class="item" data-value="3">원딜</div>
-                    <div class="item" data-value="4">서포터</div>
+                    <div class="item" data-value="top">탑</div>
+                    <div class="item" data-value="jungle">정글</div>
+                    <div class="item" data-value="middle">미드</div>
+                    <div class="item" data-value="bottom">원딜</div>
+                    <div class="item" data-value="support">서포터</div>
                 </div>
             </div>
 
@@ -49,6 +64,18 @@
                 <div class="results"></div>
             </div>
         </div>
+
+        <table class="ui mini selectable celled table">
+            <thead>
+            <tr>
+                <th>Names</th>
+                <th>Games</th>
+                <th>Delta</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
