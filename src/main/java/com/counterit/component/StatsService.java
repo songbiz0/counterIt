@@ -1,5 +1,6 @@
 package com.counterit.component;
 
+import com.counterit.model.ChampEntity;
 import com.counterit.model.StatsDTO;
 import com.counterit.model.StatsVO;
 import com.counterit.repository.ChampRepository;
@@ -19,29 +20,9 @@ public class StatsService {
     @Autowired
     ChampRepository champRepository;
 
-    public List<StatsVO> getStats(StatsDTO statsDTO) {
-        Long idx = champRepository.findByKrnm(statsDTO.getChampname()).getIdx();
-        StringBuilder sb = new StringBuilder();
-        if(statsDTO.isSilver()) {
-            sb.append("'silver'");
-        }
-        if(statsDTO.isGold_plus()) {
-            if(sb.length() != 0) {
-                sb.append(", ");
-            }
-            sb.append("'gold_plus'");
-        }
-
-        String sql = "SELECT s.games, s.delta, c.krnm AS vschampname FROM " +
-                " (SELECT std_idx, SUM(games) AS games, round(AVG(delta), 2) AS delta " +
-                " FROM tb_stats s " +
-                " WHERE std_idx = ? " +
-                " AND tier IN (?) " +
-                " AND lane = ?" +
-                " GROUP BY vs_idx " +
-                " HAVING games >= 1000) s " +
-                "INNER JOIN tb_champ c " +
-                "ON s.std_idx = c.idx " +
-                "ORDER BY s.delta";
+    public StatsDTO setStdIdx(StatsDTO dto) {
+        ChampEntity champ = champRepository.findByKrnm(dto.getChampname());
+        dto.setStd_idx(champ.getIdx());
+        return dto;
     }
 }

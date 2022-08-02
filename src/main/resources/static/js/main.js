@@ -6,7 +6,6 @@ const getChampList = () => {
         .then(data => {
             data.forEach(champ => {
                 content.push({title: champ.krnm});
-                console.log(champ);
             });
 
             $('.ui.search').search({
@@ -29,9 +28,16 @@ searchElem.addEventListener('keypress', e => {
 });
 
 const getResult = () => {
+    const tiers = [];
+    if($('#silver').checkbox('is checked')) {
+        tiers.push('silver');
+    }
+    if($('#gold_plus').checkbox('is checked')) {
+        tiers.push('gold_plus');
+    }
+
     fetch('/getstats?lane=' + $('.ui.dropdown').dropdown('get text')
-    + '&silver=' + $('#silver').checkbox('is checked')
-    + '&gold_plus=' + $('#gold_plus').checkbox('is checked')
+    + '&tiers=' + tiers
     + '&champname=' + $('.ui.search').search('get value'))
         .then(res => res.json())
         .then(data => { console.log(data); })
