@@ -70,10 +70,7 @@ public class CrawlingService {
                 System.out.println("NOW CRAWLING -> " + tierLog + " - " + laneLog + " (" + version + ")");
                 for(ChampEntity champEntity : champEntityList) {
                     //이동을 원하는 url
-                    String champName = champEntity.getEnnm().toLowerCase().replace("'", "").replace(".", "").replace(" ", "");
-                    if(champName.equals("renata glasc")) {
-                        champName = "renata";
-                    }
+                    String champName = ChampService.champNameSimplify(champEntity.getEnnm());
                     String laneName = lanes.get(j);
                     String tierName = tiers.get(i);
 

@@ -37,9 +37,11 @@ const getResult = () => {
         tiers.push('gold_plus');
     }
 
-    fetch('/getstats?lane=' + $('.ui.dropdown').dropdown('get value')
+    const lane = $('.ui.dropdown').dropdown('get value');
+    const champName = $('.ui.search').search('get value');
+    fetch('/getstats?lane=' + lane
     + '&tiers=' + tiers
-    + '&champname=' + $('.ui.search').search('get value'))
+    + '&champname=' + champName)
         .then(res => res.json())
         .then(data => {
             tbodyElem.innerHTML = ``;
@@ -48,12 +50,24 @@ const getResult = () => {
                 const trElem = document.createElement('tr');
                 const games = item.games.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                 trElem.innerHTML = `
-                <td>${item.vschampname}</td>
+                <td>${item.krnm}</td>
                 <td>${games}</td>
                 <td>${item.delta}</td>
                 `
+
+                trElem.addEventListener('click', () => {
+                    makeLink(champName, lane, item.vsennm);
+                });
                 tbodyElem.append(trElem);
             });
         })
         .catch(err => { console.error(err); });
+}
+
+const makeLink = (krnm, lane, vsennm) => {
+    fetch('/getennm?name=' + krnm)
+        .then(res => res.json())
+        .then(data => {
+            window.open(`https://lolalytics.com/lol/${vsennm}/vs/${data.result}/build/?lane=${lane}&vslane=${lane}&tier=gold_plus`);
+        }).catch(err => { console.error(err); });
 }

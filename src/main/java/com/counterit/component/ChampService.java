@@ -19,4 +19,12 @@ public class ChampService {
             System.out.println(champEntity.getKrnm() + " : " + champEntity.getEnnm());
         }
     }
+
+    public static String champNameSimplify(String name) {
+        name = name.toLowerCase().replace("'", "").replace(".", "").replace(" ", "");
+        if(name.equals("renata glasc")) {
+            name = "renata";
+        }
+        return name;
+    }
 }

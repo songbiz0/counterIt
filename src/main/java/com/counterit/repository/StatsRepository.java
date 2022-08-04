@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface StatsRepository extends JpaRepository<StatsEntity, Long> {
 
-    @Query(value = "SELECT s.gsum, s.davg, c.krnm " +
+    @Query(value = "SELECT s.gsum, s.davg, c.krnm, c.ennm as vsennm " +
             "FROM (SELECT std_idx, vs_idx, SUM(games) AS gsum, round(AVG(delta), 2) AS davg " +
             "FROM tb_stats s " +
             "WHERE std_idx = :#{#dto.std_idx} " +

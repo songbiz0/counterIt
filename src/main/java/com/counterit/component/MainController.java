@@ -1,9 +1,6 @@
 package com.counterit.component;
 
-import com.counterit.model.ChampEntity;
-import com.counterit.model.StatsDTO;
-import com.counterit.model.StatsInterface;
-import com.counterit.model.StatsVO;
+import com.counterit.model.*;
 import com.counterit.repository.ChampRepository;
 import com.counterit.repository.StatsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +46,11 @@ public class MainController {
         }
 
         return list;
+    }
+
+    @GetMapping("/getennm")
+    @ResponseBody
+    public StringVO getEnnm(String name) {
+        return new StringVO(ChampService.champNameSimplify(champRepository.findByKrnm(name).getEnnm()));
     }
 }
