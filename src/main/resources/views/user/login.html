@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="templates/thymeleaf_layout">
+<head>
+  <meta charset="UTF-8">
+  <script defer th:src="@{/js/user/login.js?n=1}"></script>
+  <title>로그인</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div sec:authorize="isAuthenticated()">
+    <script>
+      alert('이미 로그인되어 있습니다.');
+      location.href = '/';
+    </script>
+  </div>
+    <div class="ui left aligned container mt50">
+      <div class="w500 mct">
+        <form id="loginForm" class="ui tiny form mb10" method="post" th:action="@{/user/login}">
+          <div class="field">
+            <label>아이디</label>
+            <input type="text" name="uid" placeholder="아이디">
+          </div>
+          <div class="field">
+            <label>비밀번호</label>
+            <input type="password" name="upw" placeholder="비밀번호">
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" id="keepLoginChk" name="remember-me">
+              <label class="hp" for="keepLoginChk">로그인 유지</label>
+            </div>
+          </div>
+        </form>
+        <div>
+          <div class="frow w100p mb10 gap5">
+            <button class="fr1 ui secondary tiny fluid button" id="loginBtn">로그인</button>
+            <a th:href="@{/user/join}" class="fr1"><button class="ui basic tiny fluid button">회원가입</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+</th:block>
+</body>
+</html>

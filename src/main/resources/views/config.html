@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="templates/thymeleaf_layout">
+<head>
+    <meta charset="UTF-8">
+    <script defer th:src="@{/js/config.js?n=4}"></script>
+    <title>Title</title>
+</head>
+<th:block layout:fragment="content">
+    <div id="data"
+         th:data-top="${top}"
+         th:data-jungle="${jungle}"
+         th:data-middle="${middle}"
+         th:data-bottom="${bottom}"
+         th:data-support="${support}"></div>
+    <div class="ui left aligned container mb20">
+        <table class="ui mini celled table">
+            <thead>
+            <tr>
+                <th>이름</th>
+                <th></th>
+                <th>탑</th>
+                <th>정글</th>
+                <th>미드</th>
+                <th>원딜</th>
+                <th>서폿</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="champ : ${champs}">
+                <td th:text="${champ.krnm}"></td>
+                <td class="tact">
+                    <div class="ui checkbox check_all" th:data-idx="${champ.idx}"><input type="checkbox" name="example"></div>
+                </td>
+                <td class="tact">
+                    <div class="ui checkbox top_lane" th:data-idx="${champ.idx}"><input type="checkbox"></div>
+                </td>
+                <td class="tact">
+                    <div class="ui checkbox jungle_lane" th:data-idx="${champ.idx}"><input type="checkbox"></div>
+                </td>
+                <td class="tact">
+                    <div class="ui checkbox middle_lane" th:data-idx="${champ.idx}"><input type="checkbox"></div>
+                </td>
+                <td class="tact">
+                    <div class="ui checkbox bottom_lane" th:data-idx="${champ.idx}"><input type="checkbox"></div>
+                </td>
+                <td class="tact">
+                    <div class="ui checkbox support_lane" th:data-idx="${champ.idx}"><input type="checkbox"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</th:block>
+</html>

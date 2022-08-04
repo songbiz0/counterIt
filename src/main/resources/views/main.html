@@ -2,35 +2,14 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="temp/thymeleaf_layout">
+      layout:decorate="templates/thymeleaf_layout">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
     <script defer th:src="@{/js/main.js?n=4}"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <title>Title</title>
 </head>
-<body>
+<th:block layout:fragment="content">
     <div class="ui left aligned container mb20">
-        <div class="ui mini menu mt20">
-            <div class="header item">
-                CounterIt
-            </div>
-            <a class="item active">
-                메인
-            </a>
-            <a class="item">
-                로그인
-            </a>
-            <a class="item">
-                회원가입
-            </a>
-        </div>
-
         <div class="frow gap5 mt30">
             <div class="ui mini checkbox" id="silver">
                 <input type="checkbox" tabindex="0" class="hidden">
@@ -77,5 +56,5 @@
             </tbody>
         </table>
     </div>
-</body>
+</th:block>
 </html>

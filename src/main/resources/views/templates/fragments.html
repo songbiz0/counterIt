@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="header" th:with="url = ${#httpServletRequest.requestURI}">
+    <header>
+        <div class="ui left aligned container mb20">
+            <div class="ui mini menu mt20">
+                <a th:href="@{/}">
+                    <div class="header item">
+                        CounterIt
+                    </div>
+                </a>
+                <a class="item" th:href="@{/}" th:classappend="${url} == '/' ? 'active' : ''">
+                    메인
+                </a>
+                <a sec:authorize="!isAuthenticated()" class="item" th:href="@{/user/login}" th:classappend="${url} == '/user/login' ? 'active' : ''">
+                    로그인
+                </a>
+                <a sec:authorize="!isAuthenticated()" class="item" th:href="@{/user/join}" th:classappend="${url} == '/user/join' ? 'active' : ''">
+                    회원가입
+                </a>
+                <a sec:authorize="isAuthenticated()" class="item" th:href="@{/config}" th:classappend="${url} == '/config' ? 'active' : ''">
+                    설정
+                </a>
+                <a sec:authorize="isAuthenticated()" class="item" th:href="@{/user/logout}">
+                    로그아웃
+                </a>
+            </div>
+        </div>
+    </header>
+</th:block>

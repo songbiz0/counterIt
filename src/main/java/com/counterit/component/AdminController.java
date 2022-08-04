@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
@@ -18,20 +20,18 @@ public class AdminController {
     @Autowired ChampService champService;
 
     @GetMapping("/admin")
-    public String admin() {
-        return "/admin";
-    }
+    public void admin() {}
 
     @PostMapping("/insertchamp")
     public String insertChamp(ChampEntity champEntity) {
         champRepository.save(champEntity);
-        return "/admin";
+        return "/admin/admin";
     }
 
     @GetMapping("/crawling")
     public String crawling(@RequestParam String version) {
         crawlingService.crawling(version);
-        return "/admin";
+        return "/admin/admin";
     }
 
     @GetMapping("/crawlingrange")
@@ -43,6 +43,6 @@ public class AdminController {
             String season = from.split("\\.")[0];
             crawlingService.crawling(season + "." + i);
         }
-        return "/admin";
+        return "/admin/admin";
     }
 }
