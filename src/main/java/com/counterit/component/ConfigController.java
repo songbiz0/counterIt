@@ -37,6 +37,9 @@ public class ConfigController {
         }
 
         List<ChampEntity> champList = champRepository.findAll();
+        for(ChampEntity entity : champList) {
+            entity.setEnnm(ChampService.champNameSimplify(entity.getEnnm()));
+        }
         model.addAttribute("champs", champList);
 
         List<String> lanes = List.of("top", "jungle", "middle", "bottom", "support");

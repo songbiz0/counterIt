@@ -2,7 +2,9 @@ package com.counterit.component;
 
 import com.counterit.model.*;
 import com.counterit.repository.ChampRepository;
+import com.counterit.repository.MyChampRepository;
 import com.counterit.repository.StatsRepository;
+import com.counterit.security.AuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,10 @@ public class MainController {
     StatsService statsService;
     @Autowired
     StatsRepository statsRepository;
+    @Autowired
+    AuthenticationFacade authenticationFacade;
+    @Autowired
+    MyChampRepository myChampRepository;
 
     @GetMapping("/")
     public String main() {
@@ -39,10 +45,20 @@ public class MainController {
         List<StatsVO> list = new ArrayList<>();
 
 
-        List<StatsInterface> asdasd = statsRepository.getStats(statsDTO);
+        List<StatsInterface> statsList = statsRepository.getStats(statsDTO);
+        UserEntity user = authenticationFacade.getLoginUser();
 
-        for(StatsInterface item : asdasd) {
-            list.add(item.getStats());
+        if(user != null && myChampRepository.findByUserEntity_IdxAndLane(user.getIdx(), statsDTO.getLane()).size() > 0) {
+            for(StatsInterface item : statsList) {
+                List<MyChampEntity> configList = myChampRepository.findByUserEntity_IdxAndLaneAndChampEntity_Ennm(user.getIdx(), statsDTO.getLane(), item.getVsennm());
+                if(configList.size() > 0) {
+                    list.add(item.getStats());
+                }
+            }
+        } else {
+            for(StatsInterface item : statsList) {
+                list.add(item.getStats());
+            }
         }
 
         return list;
