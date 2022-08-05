@@ -8,4 +8,5 @@ import java.util.List;
 public interface MyChampRepository extends JpaRepository<MyChampEntity, Long> {
 
     List<MyChampEntity> findByUserEntity_IdxAndLane(Long idx, String lane);
+    void deleteByUserEntity_idx(Long idx);
 }

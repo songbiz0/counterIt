@@ -10,16 +10,20 @@
 </head>
 <th:block layout:fragment="content">
     <div class="ui left aligned container mb20">
+        <div class="frow jcright gap5">
+            <div class="ui basic mini button" id="cancelBtn">변경 취소</div>
+            <div class="ui secondary mini button" id="saveBtn">변경 저장</div>
+        </div>
         <table class="ui mini celled table">
             <thead>
             <tr id="head_tr">
-                <th>이름</th>
-                <th></th>
-                <th>탑</th>
-                <th>정글</th>
-                <th>미드</th>
-                <th>원딜</th>
-                <th>서폿</th>
+                <th class="tact">이름</th>
+                <th class="tact"></th>
+                <th class="tact">탑</th>
+                <th class="tact">정글</th>
+                <th class="tact">미드</th>
+                <th class="tact">원딜</th>
+                <th class="tact">서폿</th>
             </tr>
             </thead>
             <tbody>
@@ -29,19 +33,19 @@
                     <div class="ui checkbox parent" th:classappend="${champ.ennm}"><input type="checkbox"></div>
                 </td>
                 <td class="tact">
-                    <div class="ui checkbox top_lane child" th:classappend="${champ.ennm}"><input type="checkbox" th:attr="checked=${#lists.contains(top, champ.idx)} ? '' : null"></div>
+                    <div class="ui checkbox child" th:classappend="${champ.ennm}" data-lane="top"><input type="checkbox" th:attr="checked=${#lists.contains(top, champ.idx)} ? '' : null"></div>
                 </td>
                 <td class="tact">
-                    <div class="ui checkbox jungle_lane child" th:classappend="${champ.ennm}"><input type="checkbox" th:attr="checked=${#lists.contains(jungle, champ.idx)} ? '' : null"></div>
+                    <div class="ui checkbox child" th:classappend="${champ.ennm}" data-lane="jungle"><input type="checkbox" th:attr="checked=${#lists.contains(jungle, champ.idx)} ? '' : null"></div>
                 </td>
                 <td class="tact">
-                    <div class="ui checkbox middle_lane child" th:classappend="${champ.ennm}"><input type="checkbox" th:attr="checked=${#lists.contains(middle, champ.idx)} ? '' : null"></div>
+                    <div class="ui checkbox child" th:classappend="${champ.ennm}" data-lane="middle"><input type="checkbox" th:attr="checked=${#lists.contains(middle, champ.idx)} ? '' : null"></div>
                 </td>
                 <td class="tact">
-                    <div class="ui checkbox bottom_lane child" th:classappend="${champ.ennm}"><input type="checkbox" th:attr="checked=${#lists.contains(bottom, champ.idx)} ? '' : null"></div>
+                    <div class="ui checkbox child" th:classappend="${champ.ennm}" data-lane="bottom"><input type="checkbox" th:attr="checked=${#lists.contains(bottom, champ.idx)} ? '' : null"></div>
                 </td>
                 <td class="tact">
-                    <div class="ui checkbox support_lane child" th:classappend="${champ.ennm}"><input type="checkbox" th:attr="checked=${#lists.contains(support, champ.idx)} ? '' : null"></div>
+                    <div class="ui checkbox child" th:classappend="${champ.ennm}" data-lane="support"><input type="checkbox" th:attr="checked=${#lists.contains(support, champ.idx)} ? '' : null"></div>
                 </td>
             </tr>
             </tbody>
