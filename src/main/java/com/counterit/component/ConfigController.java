@@ -33,7 +33,7 @@ public class ConfigController {
     @GetMapping("/config")
     public String config(Model model) {
         if(authenticationFacade.getLoginUser() == null) {
-            return "/main";
+            return "main";
         }
 
         List<ChampEntity> champList = champRepository.findAll();
@@ -55,7 +55,7 @@ public class ConfigController {
             model.addAttribute(lane, idxList);
         }
 
-        return "/config";
+        return "config";
     }
 
     @PostMapping("/updateConfig")

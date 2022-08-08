@@ -25,13 +25,13 @@ public class AdminController {
     @PostMapping("/insertchamp")
     public String insertChamp(ChampEntity champEntity) {
         champRepository.save(champEntity);
-        return "/admin/admin";
+        return "admin/admin";
     }
 
     @GetMapping("/crawling")
     public String crawling(@RequestParam String version) {
         crawlingService.crawling(version);
-        return "/admin/admin";
+        return "admin/admin";
     }
 
     @GetMapping("/crawlingrange")
@@ -43,6 +43,6 @@ public class AdminController {
             String season = from.split("\\.")[0];
             crawlingService.crawling(season + "." + i);
         }
-        return "/admin/admin";
+        return "admin/admin";
     }
 }
