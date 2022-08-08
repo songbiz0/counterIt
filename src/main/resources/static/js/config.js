@@ -60,23 +60,23 @@ const getCheckedList = () => {
 
     childChecks.forEach(item => {
         if($(item).checkbox('is checked')) {
-            const champName = item.parentNode.parentNode.getAttribute('class');
+            const idx = item.parentNode.parentNode.dataset.idx;
             const laneName = item.dataset.lane;
             switch(laneName) {
                 case 'top':
-                    arrayObject.top.push(champName);
+                    arrayObject.top.push(idx);
                     break;
                 case 'jungle':
-                    arrayObject.jungle.push(champName);
+                    arrayObject.jungle.push(idx);
                     break;
                 case 'middle':
-                    arrayObject.middle.push(champName);
+                    arrayObject.middle.push(idx);
                     break;
                 case 'bottom':
-                    arrayObject.bottom.push(champName);
+                    arrayObject.bottom.push(idx);
                     break;
                 case 'support':
-                    arrayObject.support.push(champName);
+                    arrayObject.support.push(idx);
             }
         }
     });

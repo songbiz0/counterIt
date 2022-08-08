@@ -29,39 +29,39 @@ public class ConfigService {
 
         List<MyChampEntity> list = new ArrayList<>();
 
-        for(String name : dto.getTop()) {
+        for(Long idx : dto.getTop()) {
             MyChampEntity entity = new MyChampEntity();
             entity.setLane("top");
             entity.setUserEntity(authenticationFacade.getLoginUser());
-            entity.setChampEntity(champRepository.findByEnnm(name));
+            entity.setChampEntity(champRepository.findById(idx).get());
             list.add(entity);
         }
-        for(String name : dto.getJungle()) {
+        for(Long idx : dto.getJungle()) {
             MyChampEntity entity = new MyChampEntity();
             entity.setLane("jungle");
             entity.setUserEntity(authenticationFacade.getLoginUser());
-            entity.setChampEntity(champRepository.findByEnnm(name));
+            entity.setChampEntity(champRepository.findById(idx).get());
             list.add(entity);
         }
-        for(String name : dto.getMiddle()) {
+        for(Long idx : dto.getMiddle()) {
             MyChampEntity entity = new MyChampEntity();
             entity.setLane("middle");
             entity.setUserEntity(authenticationFacade.getLoginUser());
-            entity.setChampEntity(champRepository.findByEnnm(name));
+            entity.setChampEntity(champRepository.findById(idx).get());
             list.add(entity);
         }
-        for(String name : dto.getBottom()) {
+        for(Long idx : dto.getBottom()) {
             MyChampEntity entity = new MyChampEntity();
             entity.setLane("bottom");
             entity.setUserEntity(authenticationFacade.getLoginUser());
-            entity.setChampEntity(champRepository.findByEnnm(name));
+            entity.setChampEntity(champRepository.findById(idx).get());
             list.add(entity);
         }
-        for(String name : dto.getSupport()) {
+        for(Long idx : dto.getSupport()) {
             MyChampEntity entity = new MyChampEntity();
             entity.setLane("support");
             entity.setUserEntity(authenticationFacade.getLoginUser());
-            entity.setChampEntity(champRepository.findByEnnm(name));
+            entity.setChampEntity(champRepository.findById(idx).get());
             list.add(entity);
         }
         myChampRepository.saveAll(list);

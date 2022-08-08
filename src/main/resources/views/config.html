@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="champ : ${champs}" th:class="${champ.ennm}">
+            <tr th:each="champ : ${champs}" th:class="${champ.ennm}" th:data-idx="${champ.idx}">
                 <td th:text="${champ.krnm}"></td>
                 <td class="tact">
                     <div class="ui checkbox parent" th:classappend="${champ.ennm}"><input type="checkbox"></div>

@@ -6,9 +6,9 @@ import java.util.List;
 
 @Getter
 public class ConfigDTO {
-    private List<String> top;
-    private List<String> jungle;
-    private List<String> middle;
-    private List<String> bottom;
-    private List<String> support;
+    private List<Long> top;
+    private List<Long> jungle;
+    private List<Long> middle;
+    private List<Long> bottom;
+    private List<Long> support;
 }
